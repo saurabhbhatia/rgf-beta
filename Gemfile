@@ -28,6 +28,7 @@ gem 'formtastic', "~>2.1.1"
 gem "cancan"
 gem "mini_magick"
 gem 'twitter-bootstrap-rails'
+gem "omniauth-facebook"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

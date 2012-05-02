@@ -10,11 +10,13 @@ RealGoodFood::Application.routes.draw do
   # match "/static_pages/*id" => 'static_pages#show', :as => :page, :format => false
   get "friends/index"
 
-  resources :blogs
+resources :blogs
 authenticated :user do
   root :to => 'dashboards#index'
 end
-
+devise_scope :user do
+  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+end
   resources :events
 
   resources :locations
@@ -29,7 +31,7 @@ end
   get 'friend_ship' => "friendships#create", :as => "friend_ship"
   get 'user_to_groups' => "user_to_groups#create", :as => "user_to_groups"
 
-  devise_for :users, :controllers => { :registrations => "registrations" } do
+  devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/users/sign_out' => 'devise/sessions#destroy'
     resources :friends
   end
