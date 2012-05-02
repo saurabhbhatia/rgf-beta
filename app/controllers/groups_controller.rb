@@ -14,6 +14,14 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+    @group.user_to_groups.each do |p|
+      @user =  p.user_id
+      @gr_oup = p.group_id
+       if @user == current_user.id && @gr_oup == @group.id
+          @text ="you are already a member of this group "
+       end
+    @activity = UserToGroup.find_all_by_group_id(@group)  
+    end
 
     respond_to do |format|
       format.html # show.html.erb

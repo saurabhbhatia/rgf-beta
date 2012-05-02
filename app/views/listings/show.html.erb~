@@ -1,26 +1,32 @@
 <div style ="background:#ffffff;border:3px solid #ffffff;border-radius:8px;padding:20px">
 <style>
-.floatright { float: right; padding-bottom:2px;height:auto;border:2px solid #333333;border-radius:8px; }
+.floatright { float: right; padding-top:3px;padding-left:3px;padding-right:3px;border:2px solid #fff;border-radius:8px;background:#000 }
+.content p{font-family: 'Chau Philomene One', sans-serif;color :#006666}
 </style>
+
+<link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Averia+Libre' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Chau+Philomene+One' rel='stylesheet' type='text/css'>
 
 <div class ="floatright">
 <% if @listing.photo.exists? then %>
-	<%= image_tag(@listing.photo.url) %>
+	<%= image_tag(@listing.photo.url(:small)) %>
 <% end %>
 </div>
 <br>
 <b>
  <% if @listing.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> |
-  <%= link_to 'Remove', @listing, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to 'View All Listings', listings_path %>
+  <%= link_to 'Edit', edit_listing_path(@listing),  :class => 'btn btn-success' %> 
+  <%= link_to 'Remove', @listing, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %> 
+  <%= link_to 'View All Listings', listings_path, :class => 'btn btn-success' %>
 <% else %>
-  <%= link_to 'View All Listings', listings_path %>
+  <%= link_to 'View All Listings', listings_path, :class => 'btn btn-mini' %>
 <% end %>
 </b>
 
+<div class ="content">
 <br><br>
-  <h1><%= @listing.title %></h1>
+  <h3 style ="color:#3B2501"><%= @listing.title %></h3>
 <br>
 
 <p>
@@ -47,14 +53,10 @@
 </p>
 <br>
 
-<table>
 <b>Food type:</b><br />
-<% @listing.tags.each do |f| %>
-<tr>
-<td><%= f.name %></td>
-</tr>
-<% end %>
-</table>
+<ol><% @listing.tags.each do |f| %>
+<li><%= f.name %></li>
+<% end %></ol>
 <br>
 
 <p>
@@ -114,13 +116,14 @@ color:#000000;
 }
 
 </style>
+<%= @listing.comments.inspect %>
 
 <% for comment in @listing.comments %>
  <% if user_signed_in? %>
 
 <div id ="comment">
 
-<div id ="avatar" style ="padding-left:25px;padding-top:20px;">
+<div id ="avatar" style ="padding-left:25px;padding:20px;">
       <%= image_tag(current_user.profile.photo(:small), :size =>"150x150") %>
       <strong style  = color:blue>
          <%= h comment.user.email  %>

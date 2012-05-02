@@ -1,114 +1,54 @@
-<style>
-
-#sidebar {
-    background: -moz-linear-gradient(center top , #EBEBEB, #FFFFFF 80px) repeat scroll 0 0 transparent;
-    border: 0px solid #FFFFFF;
-    border-radius: 4px;
-    box-shadow: 0 0 20px #B4B4B4;
-    float: right;
-    padding: 20px 20px 40px;
-    position: relative;
-    width: 250px;
-}
-#sidebar img {
-    float: left;
-}
-.text, .photo, .quote, .link, .chat, .audio, .video {
-    float: left;
-    margin-bottom: 30px;
-}
-
-div.content {
-    border: #48f solid 3px;
-    clear: left;
-    padding: 1em;
-}
-
-ol#toc {
-    height: 2em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-ol#toc a {
-    background: #bdf url(tabs.gif);
-    color: #008;
-    display: block;
-    float: left;
-    height: 2em;
-    padding-left: 10px;
-    text-decoration: none;
-}
-
-ol#toc a:hover {
-    background-color: #3af;
-    background-position: 0 -120px;
-}
-
-ol#toc a:hover span {
-    background-position: 100% -120px;
-}
-
-ol#toc li {
-    float: left;
-    margin: 0 1px 0 0;
-}
-
-ol#toc li.current a {
-    background-color: #48f;
-    background-position: 0 -60px;
-    color: #fff;
-    font-weight: bold;
-}
-
-ol#toc li.current span {
-    background-position: 100% -60px;
-}
-
-ol#toc span {
-    background: url(tabs.gif) 100% 0;
-    display: block;
-    line-height: 2em;
-    padding-right: 10px;
-}
-
-
-</style>
-
-<div id="sidebar" style ="float:right;padding:10px;border:0px solid black;">
-  <% @users.each do |user| %>
-<div id="user">
+<% if signed_in? %>
+<% @users.each do |user| %>
       <% if user.email != current_user.email %>
-        <dd style = "float:left">
-          <%= h user.profile.full_name %>
-        </dd>
-
-        <dd style ="float:right;padding-right:10px">
-          <%= link_to "Add Friend", friend_ship_path(:friend_id => user), :method => :post %>
-        </dd>
+          <li><%= h user.profile.full_name %>
+          <%= link_to "Add Friend", friend_ship_path(:friend_id => user), :method => :post %></li>
       <% end %>
+  <% end %>
+
+ <div class="row-fluid">
+
+    <div class="span4">
+      <b>MyFriends </b>
+     <ol>
+      <% for friendship in current_user.friendships %>
+         <li><%= h friendship.friend.profile.full_name %>
+            (<%= link_to "remove", friendship.user.profile.full_name, :method => :delete %>)
+         </li>
+       <% end %>
+     </ol>
     </div>
-  <% end %>
-</div>
 
 
-<h2>Friends</h2>
-<ul>
-  <% for friendship in current_user.friendships %>
-    <li>
-      <%= h friendship.friend.profile.full_name %>
-      (<%= link_to "remove", friendship.user.profile.full_name, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
 
 
-<h2>Mutual Friends</h2>
-<ul>
+<ol>
   <% for user in current_user.inverse_friends %>
     <li><%=h user.profile.full_name %></li>
   <% end %>
-</ul>
+</ol>
+
+
+ <div class="row-fluid">
+
+    <div class="span4">
+      <b>MyListings </b>
+     <ol>
+       <% @my_listings.each do |m| %>
+         <li><%= m.title %></li>
+       <% end %>
+     </ol>
+    </div>
+
+    <div class="span8">
+      <b>MyEvents </b>
+     <ol>
+       <% @event.each do |e| %>
+        <li><%= e.name %></li>
+       <% end %></ol>
+   </div>
+ 
+ </div>
+<% end %>
 
 
