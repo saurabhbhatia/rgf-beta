@@ -83,8 +83,8 @@ h1 {
 	}
 
 h2 {
-        font-family: 'Fresca', sans-serif;
-	font-size: 20px;
+        font-family: Museo-300;
+	font-size: 17px;
 	padding: 20px 0;
 	}
 	
@@ -176,7 +176,7 @@ nav ul li.subscribe a {
 	
 #intro h2, #intro p {
 	position: relative;
-	z-index: 9999;
+	/* z-index: 9999; */
 	width: 350px;
 	}
 	
@@ -230,14 +230,14 @@ nav ul li.subscribe a {
 
 #content ul.column li {
 	float: left;
-	width: 230px; /*Set default width*/
-	padding: 0;
+	width: 300px; /*Set default width*/
+	padding: 2px;
 	margin: 5px 0;
 	display: inline;
 }
 
 #content .block {
-	height: 400px;
+	height: 280px;
 	font-size: 1em;
 	margin-right: 10px; /*Creates the 10px gap between each column*/
 	padding: 20px;
@@ -254,8 +254,8 @@ nav ul li.subscribe a {
 	
 #content .block img {
   /*Flexible image size with border*/
-	width: 89%;  /*Took 1% off of the width to prevent IE6 bug*/
-	padding: 5%;
+/* 	width: 30%;  /*Took 1% off of the width to prevent IE6 bug*/ */
+/* 	padding: 5%; */
 	background:#fff;
 	margin: 0 auto;
 	display: block;

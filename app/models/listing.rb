@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-
+  paginates_per 5
  #attr_reader :food_category_name
  #attr_accessible :food_category_name
 

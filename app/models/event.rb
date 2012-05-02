@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-
+  paginates_per 5
   has_many :groups  
 #  has_many :potlucks
   has_many :member_attending_event_registers, :dependent => :destroy

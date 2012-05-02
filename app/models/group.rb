@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-
+  paginates_per 5
   has_many :users
   has_many :user_to_groups
   geocoded_by :address   # can also be an IP address
