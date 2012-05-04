@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  before_filter :authenticate_user!
+skip_authorization_check :only => [:index, :show, :new, :edit, :create, :update]
+
   # GET /groups
   # GET /groups.json
   def index

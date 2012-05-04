@@ -17,7 +17,7 @@ gem 'gravatar_image_tag'
 gem 'gmaps4rails'
 #gem 'will_paginate'
 gem 'simple_form'
-gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
+gem "nested_form"
 gem 'amistad'
 gem "ckeditor", "3.7.0.rc3"
 gem "carrierwave"
@@ -31,8 +31,8 @@ gem 'twitter-bootstrap-rails'
 gem "omniauth-facebook"
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

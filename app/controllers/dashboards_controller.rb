@@ -1,4 +1,6 @@
 class DashboardsController < ApplicationController
+  before_filter :authenticate_user!
+skip_authorization_check :only => [:index]
 
  def index
   @my_listings = Listing.where(:user_id => current_user).page(params[:page]).per(5)
@@ -9,7 +11,7 @@ class DashboardsController < ApplicationController
   @group = Group.where(:user_id => current_user).page(params[:page]).per(5)
   @latest_event = Event.where(:created_at => 1.days.ago .. 1.days.from_now)
   @users = User.all  
-
+  
  end
 
 end

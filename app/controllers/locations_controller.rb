@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+  before_filter :authenticate_user!
+skip_authorization_check :only => [:show, :new, :edit, :create]
+
   # GET /locations
   # GET /locations.xml
 

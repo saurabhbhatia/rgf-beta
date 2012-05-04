@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_filter :authenticate_user!
+skip_authorization_check :only => [:show, :new, :edit, :create, :update]
   # GET /profiles
   # GET /profiles.json
   def index

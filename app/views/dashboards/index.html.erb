@@ -1,11 +1,4 @@
 <% if signed_in? %>
-<% @users.each do |user| %>
-      <% if user.email != current_user.email %>
-          <li><%= h user.profile.full_name %>
-          <%= link_to "Add Friend", friend_ship_path(:friend_id => user), :method => :post %></li>
-      <% end %>
-  <% end %>
-
  <div class="row-fluid">
 
     <div class="span4">

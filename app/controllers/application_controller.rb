@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  check_authorization :except => [:index, :show], :unless => :devise_controller?
 
 #  before_filter :authenticate_user!
 

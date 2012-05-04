@@ -64,14 +64,18 @@
 <pre><h1> Group Activity</h1></pre>
 <pre> 
 
-<strong>Latest Users to this group</strong>
+<% if @activity.nil? %>
+  <p>There is no Activity in the group yet</p>
+<%else%>
 <% @activity.each do |a| %>
-<pre> 
-<p><% if a.user.profile.photo.exists? then %>
+<pre>
+ <p><% if a.user.profile.photo.exists? then %>
   <%= image_tag(a.user.profile.photo.url(:thumb),:size =>"50x50") %> <p><%= a.user.profile.full_name %> joined at <%= time_tag a.created_at %></p>
-<% else %>
+    <% else %>
   <%= image_tag("../images/gravatar-60-giveo.jpg",:size=>"50x50") %> <p><%= a.user.profile.full_name %> joined at <%= time_tag a.created_at %></p>
-<% end %>
+  <% end %>
 </pre>
 <% end %>
 </pre>
+<%end%>
+

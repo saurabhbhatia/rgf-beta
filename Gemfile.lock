@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/ryanb/nested_form.git
-  revision: 63dcbcc6c6dbe07b3761ae8cc0cd04cc2a45024a
-  specs:
-    nested_form (0.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,7 +41,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.2.2)
       rails (~> 3.0)
-    addressable (2.2.7)
     amistad (0.7.5)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
@@ -78,21 +71,19 @@ GEM
     erubis (2.7.0)
     execjs (1.3.1)
       multi_json (~> 1.0)
-    faraday (0.7.6)
-      addressable (~> 2.2)
+    faraday (0.8.0)
       multipart-post (~> 1.1)
-      rack (~> 1.1)
     fastercsv (1.5.4)
     formtastic (2.1.1)
       actionpack (~> 3.0)
-    friendly_id (4.0.4)
+    friendly_id (4.0.5)
     geocoder (1.1.1)
-    gmaps4rails (1.4.8)
-      json
+    gmaps4rails (1.5.1)
     gravatar_image_tag (1.1.2)
     has_scope (0.5.1)
     hashie (1.2.0)
     hike (1.2.1)
+    httpauth (0.1)
     i18n (0.6.0)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
@@ -124,19 +115,21 @@ GEM
     mime-types (1.17.2)
     mini_magick (3.4)
       subexec (~> 0.2.1)
-    multi_json (1.3.2)
+    multi_json (1.3.4)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
-    oauth2 (0.5.2)
+    nested_form (0.2.0)
+    oauth2 (0.6.1)
       faraday (~> 0.7)
-      multi_json (~> 1.0)
-    omniauth (1.0.3)
+      httpauth (~> 0.1)
+      multi_json (~> 1.3)
+    omniauth (1.1.0)
       hashie (~> 1.2)
       rack
     omniauth-facebook (1.2.0)
       omniauth-oauth2 (~> 1.0.0)
-    omniauth-oauth2 (1.0.0)
-      oauth2 (~> 0.5.0)
+    omniauth-oauth2 (1.0.2)
+      oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
     orm_adapter (0.0.7)
     paperclip (3.0.2)
@@ -180,7 +173,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    simple_form (2.0.1)
+    simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     sprockets (2.1.3)
@@ -229,7 +222,7 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   mini_magick
   mysql2
-  nested_form!
+  nested_form
   omniauth-facebook
   paperclip
   rails (= 3.2.1)

@@ -2,6 +2,8 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   before_filter :authenticate_user!
+skip_authorization_check :only => [:index, :show, :new, :edit, :create, :update]
+
   def index
     @listings = Listing.all
 
